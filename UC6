@@ -1,0 +1,20 @@
+mysql> update employee_payroll set gender = 'M' where name = 'Swatika' or name =
+ 'Meera';
+Query OK, 2 rows affected (0.06 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update employee_payroll set gender = 'F' where name = 'Namitha';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> SELECT * FROM employee_payroll
+    -> ;
++----+---------+--------+----------+------------+
+| id | name    | gender | salary   | start      |
++----+---------+--------+----------+------------+
+|  1 | Swatika | M      |   600000 | 2022-05-22 |
+|  2 | Meera   | M      | 10000000 | 2022-05-23 |
+|  3 | Dipali  | NULL   | 10000000 | 2022-05-12 |
+|  4 | Kisalay | NULL   | 10000000 | 2022-05-12 |
++----+---------+--------+----------+------------+
+4 rows in set (0.00 sec)
