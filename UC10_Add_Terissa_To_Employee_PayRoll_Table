@@ -1,0 +1,18 @@
+mysql> insert into employee_payroll (id,name,gender,salary,start,employee_phone,address,department,basic_pay,deductions,taxable_pay,income_tax,net_pay) values
+    -> (5,'Terissa','F',5000000,sysdate(),657778999,'Mumbai','Sales',40000,5000,4000,2000,51000),
+    -> (6,'Terissa','F',5000000,sysdate(),657778999,'Mumbai','Marketing',40000,5000,4000,2000,51000);
+Query OK, 2 rows affected, 2 warnings (0.06 sec)
+Records: 2  Duplicates: 0  Warnings: 2
+
+mysql> select * from employee_payroll;
++----+---------+--------+-----------+------------+----------------+---------+------------+-----------+------------+-------------+------------+---------+
+| id | name    | gender | salary    | start      | employee_phone | address | Department | basic_pay | deductions | Taxable_pay | Income_Tax | Net_pay |
++----+---------+--------+-----------+------------+----------------+---------+------------+-----------+------------+-------------+------------+---------+
+|  1 | Swatika | F      | 300000000 | 2022-05-22 |       63426789 | Lucknow | HR         |     30000 |       5000 |        2000 |       2000 |   39000 |
+|  2 | Meera   | F      | 150000000 | 2022-05-23 |      634266789 | Lucknow | Marketing  |     30000 |       5000 |        2000 |       2000 |   39000 |
+|  3 | Dipali  | F      |  10000000 | 2022-05-12 |      645666789 | Lucknow | Finance    |     30000 |       5000 |        2000 |       2000 |   39000 |
+|  4 | Kisalay | M      |  10000000 | 2022-05-12 |       65678906 | Lucknow | Counselor  |     30000 |       5000 |        2000 |       2000 |   39000 |
+|  5 | Terissa | F      |   5000000 | 2022-07-25 |      657778999 | Mumbai  | Sales      |     40000 |       5000 |        4000 |       2000 |   51000 |
+|  6 | Terissa | F      |   5000000 | 2022-07-25 |      657778999 | Mumbai  | Marketing  |     40000 |       5000 |        4000 |       2000 |   51000 |
++----+---------+--------+-----------+------------+----------------+---------+------------+-----------+------------+-------------+------------+---------+
+6 rows in set (0.00 sec)
