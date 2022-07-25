@@ -1,0 +1,7 @@
+mysql> INSERT INTO employee_payroll(name,salary,start) VALUES
+    -> ('Swatika', 600000.00, '2022-05-22'),
+    -> ('Meera', 10000000.00, '2022-05-23'),
+    -> ('Dipali', 10000000.00, '2022-05-12'),
+    -> ('Kisalay', 10000000.00, '2022-05-12');
+Query OK, 4 rows affected (0.07 sec)
+Records: 4  Duplicates: 0  Warnings: 0
