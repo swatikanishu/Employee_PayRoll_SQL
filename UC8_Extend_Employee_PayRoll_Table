@@ -1,0 +1,77 @@
+mysql> use employee_payroll_service;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> select * from employee_payroll;
++----+---------+--------+-----------+------------+
+| id | name    | gender | salary    | start      |
++----+---------+--------+-----------+------------+
+|  1 | Swatika | M      | 300000000 | 2022-05-22 |
+|  2 | Meera   | M      | 150000000 | 2022-05-23 |
+|  3 | Dipali  | NULL   |  10000000 | 2022-05-12 |
+|  4 | Kisalay | NULL   |  10000000 | 2022-05-12 |
++----+---------+--------+-----------+------------+
+4 rows in set (0.06 sec)
+
+mysql> alter table employee_payroll add column (employee_phone int, address varchar(100),Department varchar(50) not null);
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee_payroll;
++----+---------+--------+-----------+------------+----------------+---------+------------+
+| id | name    | gender | salary    | start      | employee_phone | address | Department |
++----+---------+--------+-----------+------------+----------------+---------+------------+
+|  1 | Swatika | M      | 300000000 | 2022-05-22 |           NULL | NULL    |            |
+|  2 | Meera   | M      | 150000000 | 2022-05-23 |           NULL | NULL    |            |
+|  3 | Dipali  | NULL   |  10000000 | 2022-05-12 |           NULL | NULL    |            |
+|  4 | Kisalay | NULL   |  10000000 | 2022-05-12 |           NULL | NULL    |            |
++----+---------+--------+-----------+------------+----------------+---------+------------+
+4 rows in set (0.00 sec)
+
+mysql> update employee_payroll set address="Lucknow"
+    -> update employee_payroll set address="Lucknow";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'update employee_payroll set address="Lucknow"' at line 2
+mysql> update employee_payroll set address="Lucknow";
+Query OK, 4 rows affected (0.07 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
+mysql> select * from employee_payroll;
++----+---------+--------+-----------+------------+----------------+---------+------------+
+| id | name    | gender | salary    | start      | employee_phone | address | Department |
++----+---------+--------+-----------+------------+----------------+---------+------------+
+|  1 | Swatika | M      | 300000000 | 2022-05-22 |           NULL | Lucknow |            |
+|  2 | Meera   | M      | 150000000 | 2022-05-23 |           NULL | Lucknow |            |
+|  3 | Dipali  | NULL   |  10000000 | 2022-05-12 |           NULL | Lucknow |            |
+|  4 | Kisalay | NULL   |  10000000 | 2022-05-12 |           NULL | Lucknow |            |
++----+---------+--------+-----------+------------+----------------+---------+------------+
+4 rows in set (0.00 sec)
+
+mysql> update  employee_payroll set employee_phone=6666677778,department="HR" where name='Swatika';
+ERROR 1264 (22003): Out of range value for column 'employee_phone' at row 1
+mysql> update  employee_payroll set employee_phone=63426789,department="HR" where name='Swatika';
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update  employee_payroll set employee_phone=634266789,department="Marketing" where name='Meera';
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update  employee_payroll set employee_phone=645666789,department="Finance" where name='Dipali';
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update  employee_payroll set employee_phone=65678906,department="Counselor" where name='Kisalay';
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee_payroll;
++----+---------+--------+-----------+------------+----------------+---------+------------+
+| id | name    | gender | salary    | start      | employee_phone | address | Department |
++----+---------+--------+-----------+------------+----------------+---------+------------+
+|  1 | Swatika | M      | 300000000 | 2022-05-22 |       63426789 | Lucknow | HR         |
+|  2 | Meera   | M      | 150000000 | 2022-05-23 |      634266789 | Lucknow | Marketing  |
+|  3 | Dipali  | NULL   |  10000000 | 2022-05-12 |      645666789 | Lucknow | Finance    |
+|  4 | Kisalay | NULL   |  10000000 | 2022-05-12 |       65678906 | Lucknow | Counselor  |
++----+---------+--------+-----------+------------+----------------+---------+------------+
+4 rows in set (0.00 sec)
