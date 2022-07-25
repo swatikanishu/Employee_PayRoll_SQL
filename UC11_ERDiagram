@@ -1,0 +1,50 @@
+mysql> create table department(department_id int, deparment_name varchar(50) primary key);
+Query OK, 0 rows affected (0.09 sec)
+  insert into department(department_id,deparment_name) values
+    -> (1,'HR'),
+    ->     (2,'Marketing'),
+    ->      (3,'Finance'),
+    ->      (4,'Couselor'),
+    ->      (5,'Sales');
+Query OK, 5 rows affected (0.06 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+mysql>  alter table employee_payroll add foreign key (department) references department(deparment_name);
+Query OK, 6 rows affected (0.12 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+mysql> create table address(address_id int, address_name varchar(100) primary key);
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> insert into address(address_id,address_name)values
+    -> (1,'Lucknow'),
+    -> (2,'Mumbai');
+Query OK, 2 rows affected (0.06 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> ^C
+mysql> alter table employee_payroll add foreign key (address) references address(address_name);
+Query OK, 6 rows affected (0.13 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> describe employee_payroll;
++----------------+--------------+------+-----+---------+----------------+
+| Field          | Type         | Null | Key | Default | Extra          |
++----------------+--------------+------+-----+---------+----------------+
+| id             | int unsigned | NO   | PRI | NULL    | auto_increment |
+| name           | varchar(120) | NO   |     | NULL    |                |
+| gender         | char(1)      | YES  |     | NULL    |                |
+| salary         | double       | NO   |     | NULL    |                |
+| start          | date         | NO   |     | NULL    |                |
+| employee_phone | int          | YES  |     | NULL    |                |
+| address        | varchar(100) | YES  | MUL | NULL    |                |
+| Department     | varchar(50)  | NO   | MUL | NULL    |                |
+| basic_pay      | int          | YES  |     | NULL    |                |
+| deductions     | int          | YES  |     | NULL    |                |
+| Taxable_pay    | int          | YES  |     | NULL    |                |
+| Income_Tax     | int          | YES  |     | NULL    |                |
+| Net_pay        | int          | YES  |     | NULL    |                |
++----------------+--------------+------+-----+---------+----------------+
+13 rows in set (0.01 sec)
+
+
+
+
